@@ -15,7 +15,7 @@ from src.utils import save_object
 
 class ModelTrainer:
     def __init__(self):
-        self.model_paths = "artifacts/pickle_files"
+        self.model_paths = "artifacts/model_files"
         self.scaled_data_path = "artifacts/scaled_values"
         self.data_path = "artifacts/updated_data"
 

@@ -8,8 +8,7 @@ import pandas as pd
 from src.components.data_transformation import DataTransformation
 
 from src.components.model_trainer import ModelTrainer
-
-from src.components.data_updation import DataUpdationConfig
+from src.components.model_predictor import ModelPredictor
 from src.components.data_updation import DataUpdation
 
     
@@ -56,8 +55,8 @@ if __name__=="__main__":
     modeltrainer=ModelTrainer()
     modeltrainer.initiate_model_trainer()
 
-#    data_updation = DataUpdation()
-#    data_updation.initiate_update(labels)
+    modeltrainer=ModelPredictor()
+    modeltrainer.initiate_model_trainer()
 
     logging.info("Completed Everything!")
 
