@@ -1,6 +1,5 @@
 import os
 import sys
-from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
@@ -15,7 +14,6 @@ from src.utils import save_object
 
 class ModelTrainer:
     def __init__(self):
-        self.model_paths = "artifacts/model_files"
         self.scaled_data_path = "artifacts/scaled_values"
         self.data_path = "artifacts/updated_data"
 
@@ -49,13 +47,7 @@ class ModelTrainer:
 
                 df['labels'] = cluster_labels
                 df.to_csv(update_path , index=False)
-                logging.info(f"Updated data files and saving model - {file_name}")
-
-                save_object(
-                    file_path=os.path.join(self.model_paths , file_name)+"_ml" + '.pkl',
-                    obj=kmeans
-                )
-
+                logging.info(f"Updated data files - {file_name} and assigned clusters")
 
         except Exception as e:
             raise CustomException(e, sys)

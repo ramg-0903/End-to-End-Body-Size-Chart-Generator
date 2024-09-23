@@ -1,5 +1,4 @@
 import sys
-from dataclasses import dataclass
 
 import numpy as np 
 import pandas as pd
@@ -10,7 +9,6 @@ from sklearn.preprocessing import StandardScaler
 
 from src.exception import CustomException
 from src.logger import logging
-import os
 
 from src.utils import save_object
 
@@ -61,15 +59,15 @@ class DataTransformation:
                 train_df=pd.read_csv(self.data_paths[name])
                 logging.info(f"Starting Pre-Processing! file - {name}")
 
+                train_df = train_df.drop(columns = ['labels'])
+
                 preprocessing_obj=self.get_data_transformer_object(self.data_bits[i])
 
                 logging.info("Removing outliers from training data")
                 train_df = self.remove_outliers(train_df)
                 train_df.to_csv(self.data_paths[name], index=False) #Updating the csv files.
             
-                logging.info(
-                    f"Applying preprocessing object on training dataframe"
-                )
+                logging.info(f"Applying preprocessing object on training dataframe")
                 
                 train_arr=preprocessing_obj.fit_transform(train_df)
                 np_path = f'artifacts/scaled_values/{name}.npy'
@@ -77,7 +75,7 @@ class DataTransformation:
                 np.save(np_path, train_arr)     
 
                 save_object(
-                    file_path=f"artifacts/pickle_files/{name}.pkl",
+                    file_path=f"artifacts/preprocess_pickle_files/{name}.pkl",
                     obj=preprocessing_obj
                 )
 

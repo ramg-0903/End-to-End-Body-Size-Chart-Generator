@@ -46,6 +46,8 @@ class DataIngestion:
         
 if __name__=="__main__":
 
+    logging.info("Entered the Pipeline")
+
     ingestion_obj=DataIngestion()
     initial_data=ingestion_obj.initiate_data_ingestion()
 

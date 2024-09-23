@@ -16,7 +16,7 @@ from src.utils import save_object , load_object
 class ModelPredictor:
     def __init__(self):
         self.training_paths = "artifacts/updated_data"
-        self.preprocessor_paths = "artifacts/pickle_files"
+        self.preprocessor_paths = "artifacts/preprocess_pickle_files"
         self.model_path = "artifacts/logit_model"
 
 
